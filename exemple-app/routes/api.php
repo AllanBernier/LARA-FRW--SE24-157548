@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,10 +37,18 @@ Route::get("/hello/{name}", function (String $name) {
 });
 
 
-Route::get("/hello-request-param", function (Request $request) {
-    $name = $request->name;
-    
+Route::get("/hello-request-param", function () {
+    $name = request()->name;
+
     return response()->json([
         'message' => 'Hello from ' . $name
     ]);
 });
+
+
+Route::get('/books', [BookController::class, 'index']);
+Route::get('/books/{book}', [BookController::class, 'show']);
+Route::post('/books', [BookController::class, 'store']);
+Route::put('/books/{book}', [BookController::class, 'update']);
+Route::delete('/books/{book}', [BookController::class, 'destroy']);
+
