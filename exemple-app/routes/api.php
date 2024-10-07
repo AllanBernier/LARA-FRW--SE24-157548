@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,3 +53,6 @@ Route::post('/books', [BookController::class, 'store']);
 Route::put('/books/{book}', [BookController::class, 'update']);
 Route::delete('/books/{book}', [BookController::class, 'destroy']);
 
+
+Route::post('/pages/{book}', [PagesController::class, 'store']);
+Route::get('/pages/{book}', [PagesController::class, 'index']);

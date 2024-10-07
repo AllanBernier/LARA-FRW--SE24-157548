@@ -17,5 +17,13 @@ class Book extends Model
         'summary'
     ];
 
-}
 
+    public function bookDetails() {
+        return $this->hasOne(BookDetails::class);
+    }
+
+
+    public function pages() {
+        return $this->hasMany(Pages::class);
+    }
+}

@@ -16,7 +16,8 @@ class BookController extends Controller
     public function show(Book $book) {
         return response()->json($book);
     }
-    
+
+
     public function store(Request $request) {
         $book = Book::create($request->all());
         return request()->json($book);
@@ -24,7 +25,7 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book) {
         $book->update($request->all());
-        return request()->json($book);
+        return request()->json(['book' => $book->toArray()]);
     }
 
     public function destroy($id) {
