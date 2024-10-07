@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Http\Request;
@@ -56,3 +57,9 @@ Route::delete('/books/{book}', [BookController::class, 'destroy']);
 
 Route::post('/pages/{book}', [PagesController::class, 'store']);
 Route::get('/pages/{book}', [PagesController::class, 'index']);
+
+
+Route::post('/authors', [AuthorController::class, 'store']);
+Route::get('/authors/{author}', [AuthorController::class, 'show']);
+Route::post('/authors/{author}/attach/{book}', [AuthorController::class, 'attach']);
+Route::post('/authors/{author}/detach/{book}', [AuthorController::class, 'detach']);

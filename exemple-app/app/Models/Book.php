@@ -18,12 +18,19 @@ class Book extends Model
     ];
 
 
-    public function bookDetails() {
+    public function bookDetails()
+    {
         return $this->hasOne(BookDetails::class);
     }
 
 
-    public function pages() {
+    public function pages()
+    {
         return $this->hasMany(Pages::class);
+    }
+
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class);
     }
 }
