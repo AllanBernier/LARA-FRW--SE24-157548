@@ -9,6 +9,7 @@
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Description</th>
+                <th><a href="{{ route('products.create') }}">Create</a></th>
             </tr>
         </thead>
 
