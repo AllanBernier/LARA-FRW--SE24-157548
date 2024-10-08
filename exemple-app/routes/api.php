@@ -63,3 +63,9 @@ Route::post('/authors', [AuthorController::class, 'store']);
 Route::get('/authors/{author}', [AuthorController::class, 'show']);
 Route::post('/authors/{author}/attach/{book}', [AuthorController::class, 'attach']);
 Route::post('/authors/{author}/detach/{book}', [AuthorController::class, 'detach']);
+
+
+
+Route::get('/is-over-18', function (Request $request) {
+    return response()->json(['message' => "Vous avez plus de 18 ans"]);
+})->middleware(['check.age', 'check.password']);
