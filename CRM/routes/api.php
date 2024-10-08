@@ -34,3 +34,16 @@ Route::delete('/orders/{order}/detach/{product}', [OrderController::class, 'deta
 
 
 Route::get('/user/orders', [UserController::class, 'getOrders'])->middleware('assert.user');
+
+
+
+Route::get('/set-cookies', function () {
+    return response()->json(['message' => 'cookie set'])->cookie('key', 'valeur', 1000);
+});
+
+
+Route::get('/get-cookie', function(Request $request) {
+    return response()->json([
+        'cookie' => $request->cookie('key')
+    ]);
+});

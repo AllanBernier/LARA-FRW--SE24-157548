@@ -72,4 +72,6 @@ Route::get('/is-over-18', function (Request $request) {
 })->middleware(['check.age', 'check.password']);
 
 
-Route::post('/upload', [StorePictureController::class, 'store']);
+Route::get('/download/{filename}', [StorePictureController::class, 'download']);
+Route::post('/upload', [StorePictureController::class, 'upload']);
+Route::delete('/delete/{filename}', [StorePictureController::class, 'delete']);

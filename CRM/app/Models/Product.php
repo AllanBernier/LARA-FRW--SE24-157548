@@ -16,6 +16,8 @@ class Product extends Model
         'description'
     ];
  
+
+    
     public function details() {
         return $this->hasOne(ProductDetails::class);
     }
@@ -27,4 +29,5 @@ class Product extends Model
     public function orders() {
         return $this->belongsToMany(Order::class);
     }
+
 }
