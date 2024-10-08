@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,6 @@ Route::get('/orders/{order}', [OrderController::class, 'show']);
 Route::get('/orders', [OrderController::class, 'index']);
 Route::put('/orders/{order}/attach/{product}', [OrderController::class, 'attach']);
 Route::delete('/orders/{order}/detach/{product}', [OrderController::class, 'detach']);
+
+
+Route::get('/user/orders', [UserController::class, 'getOrders'])->middleware('assert.user');

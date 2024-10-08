@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\StorePictureController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -69,3 +70,6 @@ Route::post('/authors/{author}/detach/{book}', [AuthorController::class, 'detach
 Route::get('/is-over-18', function (Request $request) {
     return response()->json(['message' => "Vous avez plus de 18 ans"]);
 })->middleware(['check.age', 'check.password']);
+
+
+Route::post('/upload', [StorePictureController::class, 'store']);
