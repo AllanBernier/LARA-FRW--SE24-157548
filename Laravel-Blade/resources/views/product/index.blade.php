@@ -21,6 +21,16 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td>{{ $product->description }}</td>
+                <td>
+                    <a href="{{route('products.show', ['product' => $product->id])}}">Show</a>
+                    <a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a>
+                    <form action="{{route('products.destroy', ['product' => $product->id]) }}" method="post">
+                        @method('delete')
+                        @csrf
+
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
         @endForeach

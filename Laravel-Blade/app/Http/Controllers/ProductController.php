@@ -21,7 +21,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $product = new Product();
+        return view('product.create')->with('product', $product);
     }
 
     /**
@@ -29,7 +30,7 @@ class ProductController extends Controller
      */
     public function store(ProductFormRequest $request)
     {
-        $validated_data = $request->validated();
+        $validated_data = $request->validated();        
         Product::create($validated_data);
         return redirect(route('products.index'));
     }
@@ -47,15 +48,18 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.edit');
+        return view('product.edit')->with('product', $product) ;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductFormRequest $request, Product $product)
     {
-        //
+        $request->validated();
+        $product->update($request->all());
+
+        return redirect(route('products.index'));
     }
 
     /**
@@ -63,6 +67,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect(route('products.index'));
     }
 }
