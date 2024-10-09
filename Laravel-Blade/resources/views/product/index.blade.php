@@ -1,6 +1,12 @@
 <div>
     list of products :
 
+    @if( session('success'))
+        <p>{{session('success')}}</p>
+    @endif
+
+
+
     <table>
         <thead>
             <tr>
@@ -36,6 +42,8 @@
         @endForeach
 
     </table>
-    
+
+    {{ $products }}
+     
 
 </div>

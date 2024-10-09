@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index')->with('products', Product::all());
+        return view('product.index')->with('products', Product::withTrashed()->get());
     }
 
     /**
@@ -22,6 +22,7 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
+        
         return view('product.create')->with('product', $product);
     }
 
@@ -32,7 +33,7 @@ class ProductController extends Controller
     {
         $validated_data = $request->validated();        
         Product::create($validated_data);
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('success', 'Le produit a bien été crée');;
     }
 
     /**
@@ -56,10 +57,13 @@ class ProductController extends Controller
      */
     public function update(ProductFormRequest $request, Product $product)
     {
+
+        dd($request->all());
+
         $request->validated();
         $product->update($request->all());
 
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('success', 'Le produit a été modifié');
     }
 
     /**

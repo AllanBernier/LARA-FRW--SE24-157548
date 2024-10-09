@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Exemple;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Exemple;
 
     protected $fillable = [
         'name',
@@ -15,8 +16,6 @@ class Product extends Model
         'stock',
         'description'
     ];
- 
-
     
     public function details() {
         return $this->hasOne(ProductDetails::class);

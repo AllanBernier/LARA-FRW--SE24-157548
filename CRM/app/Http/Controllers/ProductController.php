@@ -32,7 +32,11 @@ class ProductController extends Controller
         ]);
 
 
+
         $product = Product::create($request->all());
+        
+        dd($product->exempleMethod());
+        
         return response()->json($product);
     }
 
